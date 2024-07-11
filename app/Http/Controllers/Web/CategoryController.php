@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends WebController
 {
     public function show($id){
         $data['cat'] = Category::findOrFail($id);

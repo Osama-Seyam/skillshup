@@ -50,6 +50,10 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $category )
+                    <form action="{{url("dashboard/categories/$category->id")}}" method="POST" id="form-delete">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$category->name('en')}}</td>
@@ -65,9 +69,9 @@
                                 <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->name('en')}}" data-name-ar="{{$category->name('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <a href="{{url("dashboard/categories/delete/$category->id")}}" class="btn btn-sm btn-danger">
+                                <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </button>
                                 <a href="{{url("dashboard/categories/toggle/$category->id")}}" class="btn btn-sm btn-secondary">
                                     <i class="fas fa-toggle-on"></i>
                                 </a>
@@ -105,7 +109,7 @@
                 </div>
             <div class="modal-body">
                 @include('admin.include.errors')
-                <form method="POST" action="{{url('dashboard/categories/store')}}" id="add-form">
+                <form method="POST" action="{{url('dashboard/categories')}}" id="add-form">
                     @csrf
                     <div class="row">
                         <div class="col-6">
@@ -143,8 +147,9 @@
             </div>
     <div class="modal-body">
         @include('admin.include.errors')
-        <form method="POST" action="{{url('dashboard/categories/update')}}" id="edit-form">
+        <form method="POST" action="{{url("dashboard/categories/$category->id")}}" id="edit-form">
             @csrf
+            @method('PUT')
             <input type="hidden" name="id" id="edit-form-id">
             <div class="row">
                 <div class="col-6">

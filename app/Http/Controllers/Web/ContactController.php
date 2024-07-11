@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
-class ContactController extends Controller
+class ContactController extends WebController
 {
     public function index(){
         $data['sett'] = Setting::select('email','phone')->first();

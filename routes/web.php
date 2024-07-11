@@ -44,20 +44,18 @@ Route::get('/lang/set/{lang}', [LangController::class, 'set']);
 // admin routes
 route::prefix('dashboard')->middleware('auth','can-enter-dashboard')->group(function(){
     Route::get('/', [AdminHomeController::class,'index']);
-    Route::get('/categories', [AdminCategoryController::class,'index']);
-    Route::post('/categories/store', [AdminCategoryController::class,'store']);
-    Route::post('/categories/update', [AdminCategoryController::class,'update']);
-    Route::get('/categories/delete/{category}', [AdminCategoryController::class,'delete']);
+
+    // Categories
+    Route::resource('categories' ,AdminCategoryController::class);
     Route::get('/categories/toggle/{category}', [AdminCategoryController::class,'toggle']);
 
-
+    // Skills
     Route::resource('skills' ,AdminSkillController::class);
     Route::get('/skills/toggle/{skill}', [AdminSkillController::class,'toggle']);
 
-    // Route::get('/exams', [AdminExamController::class,'index']);
-    // Route::post('/exams/store', [AdminExamController::class,'store']);
-    // Route::post('/exams/update', [AdminExamController::class,'update']);
-    // Route::get('/exams/delete/{exam}', [AdminExamController::class,'delete']);
+    // Exams
+    Route::resource('exams' ,AdminExamController::class);
     Route::get('/exams/toggle/{exam}', [AdminExamController::class,'toggle']);
+    Route::get('/exams/show/{exam}/questions', [AdminExamController::class,'showQuestions']);
 
 });

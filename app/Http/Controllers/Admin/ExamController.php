@@ -9,13 +9,52 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class ExamController extends Controller
+class ExamController extends AdminController
 {
     public function index(){
-        $data['exams'] = Exam::paginate(8);
-        $data['skills'] = Skill::select('id','name')->get();
+        $data['exams'] = Exam::select('id','name','skill_id','img','questions_no','active')
+        ->orderBy('id','desc')
+        ->paginate(8);
         return view('admin.exams.index')->with($data);
     }
+
+    public function show(Exam $exam){
+        $data['exam'] = $exam;
+        return view('admin.exams.show')->with($data);
+    }
+
+    public function showQuestions(Exam $exam){
+        $data['exam'] = $exam;
+        return view('admin.exams.questions')->with($data);
+    }
+
+    public function store(Request $request){
+        $request->validate([
+             'name_en'=>'required|string|max:50',
+             'name_ar'=>'required|string|max:50',
+             'img'=> 'required|image',
+             'skill_id'=> 'required|exists:categories,id',
+             'duration_mins'=>'required|',
+             'questions_no'=>'',
+             'difficulty'=>'',
+
+        ]);
+
+        $path = Storage::putFile("skills",$request->file('img'));
+
+        Skill::create([
+             'name'=>json_encode([
+                 'en'=>$request->name_en,
+                 'ar'=> $request->name_ar,
+             ]),
+             'img'=>$path,
+             'category_id' => $request->category_id,
+         ]);
+
+         session()->flash('msg','Skill added successfully');
+         return back();
+     }
+
 
     public function toggle(Exam $exam){
         $exam->update([
@@ -24,7 +63,7 @@ class ExamController extends Controller
         return back();
      }
 
-    public function delete(Exam $exam){
+    public function destroy(Exam $exam){
         try{
             $path = $exam->img;
             $exam->delete();

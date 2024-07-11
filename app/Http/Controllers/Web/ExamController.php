@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ExamController extends Controller
+class ExamController extends WebController
 {
     public function show($id){
         $data['exam'] = Exam::findOrFail($id);

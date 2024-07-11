@@ -128,7 +128,7 @@ Exam : {{ $exam->name() }}
                                </li>
                             </ul>
                           <!-- /exam details widget -->
-                          <div class="duration-countdown" data-timer="5"></div>
+                          <div class="duration-countdown" data-timer="{{$exam->duration_mins * 60}}"></div>
 
                      </div>
                <!-- /aside blog -->

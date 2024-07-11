@@ -73,7 +73,7 @@
                                 @endif
                             </td>
                             <td>
-                                <button  type="submit" data-id="{{$skill->id}}" data-name-en="{{$skill->name('en')}}" data-name-ar="{{$skill->name('ar')}}" data-img="{{$skill->img}}" data-cat-id="{{$skill->category_id}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
+                                <button  type="submit" data-id="{{$skill->id}}" data-name-en="{{$skill->name('en')}}" data-name-ar="{{$skill->name('ar')}}" data-cat-id="{{$skill->category_id}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
@@ -158,7 +158,7 @@
                 </form>
             </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" form="add-form" class="btn btn-primary">Save changes</button>
                 </div>
         </div>

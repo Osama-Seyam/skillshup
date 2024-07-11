@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     public function index(){
         $data['categories'] = Category::orderBy('id','Desc')->paginate(8);
@@ -56,7 +56,7 @@ class CategoryController extends Controller
         return back();
      }
 
-     public function delete(Category $category){
+     public function destroy(Category $category){
         try{
             $category->delete();
             $msg = "Category deleted successfully";
