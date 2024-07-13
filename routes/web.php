@@ -56,6 +56,11 @@ route::prefix('dashboard')->middleware('auth','can-enter-dashboard')->group(func
     // Exams
     Route::resource('exams' ,AdminExamController::class);
     Route::get('/exams/toggle/{exam}', [AdminExamController::class,'toggle']);
-    Route::get('/exams/show/{exam}/questions', [AdminExamController::class,'showQuestions']);
 
+    // Questions
+    Route::get('/exams/show-questions/{exam}', [AdminExamController::class,'showQuestions']);
+    Route::get('/exams/create-questions/{exam}', [AdminExamController::class,'createQuestions']);
+    Route::post('/exams/store-questions/{exam}', [AdminExamController::class,'storeQuestions']);
+    Route::get('/exams/edit-questions/{exam}/{question}', [AdminExamController::class,'editQuestions']);
+    Route::put('/exams/update-questions/{exam}/{question}', [AdminExamController::class,'updateQuestions']);
 });

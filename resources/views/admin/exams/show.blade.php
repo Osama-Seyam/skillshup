@@ -104,8 +104,8 @@
                     </div>
                 </div>
 
-                <a href="{{url("dashboard/exams/show/$exam->id/questions")}}" class="btn btn-sm btn-success">Show Questions</a>
-                <a href="{{url()->previous()}}" class="btn btn-sm btn-primary">Back</a>
+                <a href="{{url("dashboard/exams/show-questions/$exam->id")}}" class="btn btn-sm btn-success">Show Questions</a>
+                <a href="{{url("dashboard/exams")}}" class="btn btn-sm btn-primary">Back</a>
 
             </div>
         </div>

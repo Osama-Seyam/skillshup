@@ -62,12 +62,9 @@
                                         {{$question->right_ans}}
                                     </td>
                                     <td>
-                                        <a  href="{{url("dashboard/exams/$exam->id/edit")}}" class="btn btn-sm btn-info">
+                                        <a  href="{{url("dashboard/exams/edit-questions/{$exam->id}/{$question->id}")}}" class="btn btn-sm btn-info">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

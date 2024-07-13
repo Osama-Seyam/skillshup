@@ -27,7 +27,7 @@ class CategoryController extends AdminController
             ]),
         ]);
 
-        session()->flash('msg','Category added successfully');
+        session()->flash('msg','The Category was added successfully');
         return back();
     }
 
@@ -45,7 +45,7 @@ class CategoryController extends AdminController
              ]),
          ]);
 
-        session()->flash('msg','Category updated successfully');
+        session()->flash('msg','The Category was updated successfully');
          return back();
      }
 
@@ -59,7 +59,7 @@ class CategoryController extends AdminController
      public function destroy(Category $category){
         try{
             $category->delete();
-            $msg = "Category deleted successfully";
+            $msg = "The Category wa deleted successfully";
         }catch(Exception $e){
             $msg = "Can't delete this category";
         }

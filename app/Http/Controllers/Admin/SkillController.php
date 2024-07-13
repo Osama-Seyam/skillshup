@@ -36,7 +36,7 @@ class SkillController extends AdminController
              'category_id' => $request->category_id,
          ]);
 
-         session()->flash('msg','Skill added successfully');
+         session()->flash('msg','The Skill was added successfully');
          return back();
      }
 
@@ -66,7 +66,7 @@ class SkillController extends AdminController
              'category_id' => $request->category_id,
           ]);
 
-         session()->flash('msg','Skill updated successfully');
+         session()->flash('msg','The Skill was updated successfully');
           return back();
       }
 
@@ -82,7 +82,7 @@ class SkillController extends AdminController
             $path = $skill->img;
             $skill->delete();
             Storage::delete($path);
-            $msg = "Skill deleted successfully";
+            $msg = "The Skill was deleted successfully";
         }catch(Exception $e){
             $msg = "Can't delete this skill";
         }
