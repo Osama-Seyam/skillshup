@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Osama Seyam',
             'email' => 'Osama@admin.com',
-            'password' => Hash::make('sudoopenmazafaka'),
+            'password' => Hash::make('123123123'),
             'role_id' => 1
         ]);
     }
