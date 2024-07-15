@@ -52,11 +52,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam1.jpg')}}" alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">Beginner to Pro in Excel: Financial Modeling and Valuation</a>
 								<div class="course-details">
 									<span class="course-category">Design</span>
 								</div>
@@ -67,11 +67,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam2.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">Introduction to CSS </a>
+								<a class="course-title" href="{{url("exams/show/1")}}">Introduction to CSS </a>
 								<div class="course-details">
 									<span class="course-category">Programming</span>
 								</div>
@@ -82,11 +82,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam3.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">The Ultimate Drawing Course | From Beginner To Advanced</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">The Ultimate Drawing Course | From Beginner To Advanced</a>
 								<div class="course-details">
 									<span class="course-category">Drawing</span>
 								</div>
@@ -96,11 +96,11 @@
 
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam4.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">The Complete Web Development Course</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">The Complete Web Development Course</a>
 								<div class="course-details">
 									<span class="course-category">Web Development</span>
 								</div>
@@ -117,11 +117,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam5.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">PHP Tips, Tricks, and Techniques</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">PHP Tips, Tricks, and Techniques</a>
 								<div class="course-details">
 									<span class="course-category">Web Development</span>
 								</div>
@@ -132,11 +132,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam6.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">All You Need To Know About Programming</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">All You Need To Know About Programming</a>
 								<div class="course-details">
 									<span class="course-category">Programming</span>
 								</div>
@@ -147,11 +147,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam7.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">How to Get Started in Photography</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">How to Get Started in Photography</a>
 								<div class="course-details">
 									<span class="course-category">Photography</span>
 								</div>
@@ -163,11 +163,11 @@
 						<!-- single course -->
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
-								<a href="{{url("exams/1")}}" class="course-img">
+								<a href="{{url("exams/show/1")}}" class="course-img">
 									<img src="{{ asset('web/img/exam8.jpg') }} " alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
-								<a class="course-title" href="{{url("exams/1")}}">Typography From A to Z</a>
+								<a class="course-title" href="{{url("exams/show/1")}}">Typography From A to Z</a>
 								<div class="course-details">
 									<span class="course-category">Typography</span>
 								</div>
@@ -183,7 +183,7 @@
 
 				<div class="row">
 					<div class="center-btn">
-						<a class="main-button icon-button" href="{{url("exams/1")}}">More Courses</a>
+						<a class="main-button icon-button" href="{{url("exams/show/1")}}">More Courses</a>
 					</div>
 				</div>
 
