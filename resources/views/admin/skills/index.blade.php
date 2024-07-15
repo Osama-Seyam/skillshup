@@ -43,8 +43,8 @@
                         <th>ID</th>
                         <th>Name (en)</th>
                         <th>Name (ar)</th>
-                        <th>Category</th>
                         <th>Image</th>
+                        <th>Category</th>
                         <th>Active</th>
                         <th>Actions</th>
                     </tr>

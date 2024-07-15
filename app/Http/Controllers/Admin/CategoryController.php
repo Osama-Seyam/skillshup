@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
 
-class CategoryController extends AdminController
+class CategoryController extends controller
 {
     public function index(){
         $data['categories'] = Category::orderBy('id','Desc')->paginate(8);

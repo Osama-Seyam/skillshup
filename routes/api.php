@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ExamController;
+use App\Http\Controllers\Api\SkillController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::apiResource('categories', CategoryController::class);
+Route::apiResource('skills', SkillController::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [AuthController::class, 'register']);
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource('exams', ExamController::class);
+    Route::post('exams/start/{id}', [ExamController::class, 'start']);
+    Route::post('exams/submit/{id}', [ExamController::class, 'submit']);
 });

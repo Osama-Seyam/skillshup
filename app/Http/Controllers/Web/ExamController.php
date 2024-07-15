@@ -26,9 +26,16 @@ class ExamController extends WebController
 
     public function start($examId){
         $user = Auth::user();
-        $user->exams()->attach($examId);
-        session()->flash('prev' , "start/$examId");
 
+        if(! $user->exams->contains($examId)){
+            $user->exams()->attach($examId);
+        }else{
+            $user->exams()->updateExistingPivot($examId, [
+                'status'=>'closed',
+            ]);
+        }
+
+        session()->flash('prev' , "start/$examId");
         return redirect(url("exams/questions/$examId"));
     }
 

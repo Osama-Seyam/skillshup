@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\ExamAddedEvent;
 use Exception;
 use App\Models\Exam;
 use App\Models\Skill;
 use App\Models\Question;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ExamController extends AdminController
+class ExamController extends controller
 {
     public function index(){
         $data['exams'] = Exam::select('id','name','skill_id','img','questions_no','active')
@@ -96,7 +98,7 @@ class ExamController extends AdminController
                 'option_4s.*' => 'required|string|max:255',
             ]);
 
-            for ($i=0; $i < $exam->questions_no - 1; $i++) {
+            for ($i=0; $i < $exam->questions_no; $i++) {
                 Question::create([
                     'exam_id'=> $exam->id,
                     'title'=> $request->titles[$i],
@@ -110,6 +112,7 @@ class ExamController extends AdminController
             $exam->update([
                 'active' => 1
             ]);
+
 
             return redirect(url("dashboard/exams"));
      }
@@ -200,6 +203,7 @@ class ExamController extends AdminController
         }
 
         session()->flash('msg',$msg);
+        event(new ExamAddedEvent);
         return back();
     }
 

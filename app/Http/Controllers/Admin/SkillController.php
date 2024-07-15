@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class SkillController extends AdminController
+class SkillController extends controller
 {
     public function index(){
         $data['skills'] = Skill::orderBy('id','Desc')->paginate(8);

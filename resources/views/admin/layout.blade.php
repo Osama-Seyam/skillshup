@@ -86,6 +86,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('dashboard/students')}}" class="nav-link">
+              <i class="nav-icon fas fa-user-graduate"></i>
+              <p>
+                Students
+              </p>
+            </a>
+          </li>
+
+        @if (Auth::user()->role->name === 'superadmin')
+                <li class="nav-item">
+                    <a href="{{url('dashboard/admins')}}" class="nav-link">
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>
+                        Admins
+                    </p>
+                    </a>
+                </li>
+        @endif
+        <li class="nav-item">
+            <a href="{{url('dashboard/messages')}}" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Messages
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
