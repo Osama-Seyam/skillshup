@@ -33,7 +33,13 @@ class ExamController extends Controller
         return new ExamResource($exam);
     }
 
+    public function start($examId, Request $request){
+        $request->user()->exams()->attach($examId);
 
+        return response()->json([
+            'message'=> "you started exam {$examId}"
+        ]);
+    }
 
     public function submit($examId,Request $request){
         $validator = Validator::make($request->all() ,[
@@ -61,25 +67,25 @@ class ExamController extends Controller
         $score = ($points / $totalQuestoinsNumber)*100;
 
         //Calculating Time Mins
-        // $user = Auth::user();
-        // $pivotRow = $user->exams()->where('exam_id',$examId)->first();
-        // $startTime = $pivotRow->pivot->created_at;
-        // $submitTime = Carbon::now();
+        $user = $request->user();
+        $pivotRow = $user->exams()->where('exam_id',$examId)->first();
+        $startTime = $pivotRow->pivot->created_at;
+        $submitTime = Carbon::now();
 
-        // $timeMins = $submitTime->diffInMinutes($startTime);
+        $timeMins = $submitTime->diffInMinutes($startTime);
 
-        // if($timeMins > $pivotRow->duration_mins){
-        //     $score = 0;
-        // }
+        if($timeMins > $pivotRow->duration_mins){
+            $score = 0;
+        }
 
-        return response()->json($score);
         // update pivot row
-        // $user->exams()->updateExistingPivot($examId, [
-        //     'score' => $score,
-        //     'time_mins' => $timeMins
-        // ]);
+        $user->exams()->updateExistingPivot($examId, [
+            'score' => $score,
+            'time_mins' => $timeMins
+        ]);
 
-        // session()->flash("success", "you finished the exam successfully with score $score%");
-        // return redirect(url("exams/show/$examId"));
+        return response()->json([
+            'messaeg'=>'exam submitted successfully',
+        ]);
     }
 }
