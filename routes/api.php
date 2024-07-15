@@ -17,12 +17,13 @@ use App\Http\Controllers\Api\CategoryController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::apiResource('categories', CategoryController::class);
-Route::apiResource('skills', SkillController::class);
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::middleware('auth:sanctum')->group(function(){
-    Route::apiResource('exams', ExamController::class);
-    Route::post('exams/start/{id}', [ExamController::class, 'start']);
-    Route::post('exams/submit/{id}', [ExamController::class, 'submit']);
-});
+// Route::apiResource('categories', CategoryController::class);
+// Route::apiResource('skills', SkillController::class);
+
+// Route::post('/register', [AuthController::class, 'register']);
+// Route::middleware('auth:sanctum')->group(function(){
+//     Route::apiResource('exams', ExamController::class);
+//     Route::post('exams/start/{id}', [ExamController::class, 'start']);
+//     Route::post('exams/submit/{id}', [ExamController::class, 'submit']);
+// });
