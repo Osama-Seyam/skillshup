@@ -7,6 +7,8 @@ return[
     'contactnow'=>'Contact Us Now',
     'signin'=>'Sign In',
     'signup'=>'Sign Up',
+    'noAccount' => "Don't have an account yet?  Sign Up",
+    'signupAlread' => "Have an account already?  Log In",
     'rememberMe'=>'Remember Me',
 
     'heroTitle'=>'SkillsHub Free Online Skill Assessment',

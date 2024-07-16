@@ -48,6 +48,8 @@
                                 @csrf
 								<input class="input" type="email" name="email" placeholder="{{__('web.email')}}">
 								<input class="input" type="password" name="password" placeholder="{{__('web.password')}}">
+                                <a href="{{url('/register')}}">{{__('web.noAccount')}}</a>
+                                <br>
                                 <input type="checkbox" id="" name="remember"> {{__('web.rememberMe')}}
                                 <br>
 								<button id="signin-form-btn" type="submit" class="main-button icon-button pull-right">{{__('web.signin')}}</button>
