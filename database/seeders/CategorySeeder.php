@@ -20,10 +20,10 @@ class CategorySeeder extends Seeder
         Category::factory()->has(
             Skill::factory()->has(
                 Exam::factory()->has(
-                    Question::factory()->count(15)
-                )->count(2)
-            )->count(8)
-        )->count(5)->create();
+                    Question::factory()->count(1)
+                )->count(1)
+            )->count(1)
+        )->count(1)->create();
 
     }
 }
