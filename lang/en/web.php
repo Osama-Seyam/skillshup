@@ -4,6 +4,7 @@ return[
     'home'=>'Home',
     'cats' =>'Categories',
     'contact'=>'Contact Us',
+    'contactnow'=>'Contact Us Now',
     'signin'=>'Sign In',
     'signup'=>'Sign Up',
     'rememberMe'=>'Remember Me',

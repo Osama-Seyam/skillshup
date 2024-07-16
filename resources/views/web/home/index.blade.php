@@ -19,7 +19,7 @@
 						<div class="col-md-8">
 							<h1 class="white-text">{{ __('web.heroTitle')}}</h1>
 							<p class="lead white-text">{{ __('web.heroDesc')}}</p>
-							<a class="main-button icon-button" href="{{url('/register')}}">{{ __('web.getStartedBtn')}}</a>
+							<a class="main-button icon-button" style="transition: all 0.3s ease-in-out;" href="#popularExams">{{ __('web.getStartedBtn')}}</a>
 						</div>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 
 				<!-- row -->
 				<div class="row">
-					<div class="section-header text-center">
+					<div id="popularExams" class="section-header text-center">
 						<h2>{{ __('web.popularExamTitle')}}</h2>
 						<p class="lead">{{ __('web.popularExamDesc')}}</p>
 					</div>
@@ -180,16 +180,8 @@
 
 				</div>
 				<!-- /courses -->
-
-				<div class="row">
-					<div class="center-btn">
-						<a class="main-button icon-button" href="{{url("exams/show/1")}}">More Courses</a>
-					</div>
-				</div>
-
 			</div>
 			<!-- container -->
-
 		</div>
 		<!-- /Courses -->
 
@@ -209,9 +201,9 @@
 				<div class="row">
 
 					<div class="col-md-8 col-md-offset-2 text-center">
-						<h2 class="white-text">Contact Us</h2>
-						<p class="lead white-text">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
-						<a class="main-button icon-button" href="{{url("contact")}}">Contact Us Now</a>
+						<h2 class="white-text">{{__('web.contact')}}</h2>
+						<p class="lead white-text">{{__('web.contactDesc')}}</p>
+						<a class="main-button icon-button" href="{{url("contact")}}">{{__('web.contactBtn')}}</a>
 					</div>
 
 				</div>

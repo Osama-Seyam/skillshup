@@ -52,7 +52,7 @@
                 <tbody>
                     @foreach ($skills as $skill )
 
-                    <form action="{{url("dashboard/skills/$skill->id")}}" method="POST" id="form-delete">
+                    <form action="" method="POST" id="form-delete">
                         @csrf
                         @method('DELETE')
                     </form>
@@ -76,7 +76,7 @@
                                 <button  type="submit" data-id="{{$skill->id}}" data-name-en="{{$skill->name('en')}}" data-name-ar="{{$skill->name('ar')}}" data-cat-id="{{$skill->category_id}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
+                                <button type="submit" form="form-delete" data-id="{{$skill->id}}" class="btn btn-sm btn-danger delete-btn">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <a href="{{url("dashboard/skills/toggle/$skill->id")}}" class="btn btn-sm btn-secondary">
@@ -243,6 +243,17 @@
             $('#edit-form-name-en').val(nameEn)
             $('#edit-form-name-ar').val(nameAr)
             $('#edit-form-cat-id').val(catId)
+        });
+
+       $('.delete-btn').click(function () {
+            let id = $(this).attr('data-id')
+            let  urlString= "{{url("dashboard/skills")}}" + "/" + id;
+
+            var frm = document.getElementById('form-delete') || null;
+            if(frm) {
+                frm.action = urlString
+            }
+            console.log(frm.action)
         });
     </script>
 @endsection

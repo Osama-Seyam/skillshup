@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $category )
-                    <form action="{{url("dashboard/categories/$category->id")}}" method="POST" id="form-delete">
+                    <form action="" method="POST" id="form-delete">
                         @csrf
                         @method('DELETE')
                     </form>
@@ -69,7 +69,7 @@
                                 <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->name('en')}}" data-name-ar="{{$category->name('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
+                                <button type="submit" data-id="{{$category->id}}" form="form-delete" class="btn btn-sm btn-danger delete-btn">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <a href="{{url("dashboard/categories/toggle/$category->id")}}" class="btn btn-sm btn-secondary">
@@ -187,6 +187,18 @@
             $('#edit-form-id').val(id)
             $('#edit-form-name-en').val(nameEn)
             $('#edit-form-name-ar').val(nameAr)
+        });
+
+
+        $('.delete-btn').click(function () {
+            let id = $(this).attr('data-id')
+            let  urlString= "{{url("dashboard/categories")}}" + "/" + id;
+
+            var frm = document.getElementById('form-delete') || null;
+            if(frm) {
+                frm.action = urlString
+            }
+            console.log(frm.action)
         });
     </script>
 @endsection

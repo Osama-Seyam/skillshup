@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                     @foreach ($exams as $exam )
-                        <form action="{{url("dashboard/exams/$exam->id")}}" method="POST" id="form-delete">
+                        <form action="" method="POST" id="form-delete">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -84,7 +84,7 @@
                                 <a  href="{{url("dashboard/exams/$exam->id/edit")}}" class="btn btn-sm btn-info">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button type="submit" form="form-delete" class="btn btn-sm btn-danger">
+                                <button type="submit" data-id="{{$exam->id}}" form="form-delete" class="btn btn-sm btn-danger delete-btn">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <a href="{{url("dashboard/exams/toggle/$exam->id")}}" class="btn btn-sm btn-secondary">
@@ -112,4 +112,19 @@
   </div>
   <!-- /.content-wrapper -->
 
+  @endsection
+
+  @section('scripts')
+    <script>
+       $('.delete-btn').click(function () {
+            let id = $(this).attr('data-id')
+            let  urlString= "{{url("dashboard/exams")}}" + "/" + id;
+
+            var frm = document.getElementById('form-delete') || null;
+            if(frm) {
+                frm.action = urlString
+            }
+            console.log(frm.action)
+        });
+    </script>
   @endsection

@@ -3,7 +3,7 @@ return[
     //navbar
     'home'=>'الرئيسية',
     'cats' =>'التصنيفات',
-    'contact'=>'إتصل بنا',
+    'contact'=>'تواصل معانا',
     'signin'=>'تسجيل دخول',
     'signup'=>'تسجيل حساب',
     'rememberMe'=>'تذكرني',
@@ -14,7 +14,7 @@ return[
     'popularExamDesc'=>'انضم إلينا واختبر مهاراتك الآن!',
     'getStartedBtn'=>'ابدأ الان',
     'moreExamBtn'=>'المزيد من الامتحانات',
-    'contactDesc'=>'البقاء على اتصال معنا',
+    'contactDesc'=>'البقاء على اتصال معانا',
     'contactBtn'=>'اتصل بنا الآن',
     'getInTouch' => 'كن علي تواصل معانا',
 

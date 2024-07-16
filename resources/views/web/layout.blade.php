@@ -88,7 +88,7 @@
 					<!-- copyright -->
 					<div class="col-md-8 col-md-pull-4">
 						<div class="footer-copyright">
-							<span>&copy; Copyright 2021. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">SkillsHub</a></span>
+							<span>&copy; Copyright 2024. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i></span>
 						</div>
 					</div>
 					<!-- /copyright -->

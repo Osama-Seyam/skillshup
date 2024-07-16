@@ -59,7 +59,7 @@ class CategoryController extends controller
      public function destroy(Category $category){
         try{
             $category->delete();
-            $msg = "The Category wa deleted successfully";
+            $msg = "The Category was deleted successfully";
         }catch(Exception $e){
             $msg = "Can't delete this category";
         }
