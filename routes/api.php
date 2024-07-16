@@ -18,12 +18,12 @@ use App\Http\Controllers\Api\CategoryController;
 |
 */
 
-// Route::apiResource('categories', CategoryController::class);
-// Route::apiResource('skills', SkillController::class);
+Route::apiResource('categories', CategoryController::class)->except('update');
+Route::apiResource('skills', SkillController::class)->except('update');
 
-// Route::post('/register', [AuthController::class, 'register']);
-// Route::middleware('auth:sanctum')->group(function(){
-//     Route::apiResource('exams', ExamController::class);
-//     Route::post('exams/start/{id}', [ExamController::class, 'start']);
-//     Route::post('exams/submit/{id}', [ExamController::class, 'submit']);
-// });
+Route::post('/register', [AuthController::class, 'register']);
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource('exams', ExamController::class)->except('update');
+    Route::post('exams/start/{id}', [ExamController::class, 'start']);
+    Route::post('exams/submit/{id}', [ExamController::class, 'submit']);
+});
