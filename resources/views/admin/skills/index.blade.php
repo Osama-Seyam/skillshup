@@ -177,6 +177,7 @@
             </div>
     <div class="modal-body">
         @include('admin.include.errors')
+        @if (isset($skill))
         <form method="POST" action="{{url("dashboard/skills/$skill->id")}}" id="edit-form" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -220,6 +221,7 @@
                 </div>
             </div>
         </form>
+        @endif
     </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

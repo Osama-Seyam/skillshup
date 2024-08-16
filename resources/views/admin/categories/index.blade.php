@@ -37,59 +37,57 @@
                         </div>
                     </div>
 
-                <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name (en)</th>
-                        <th>Name (ar)</th>
-                        <th>Active</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($categories as $category )
-                    <form action="" method="POST" id="form-delete">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$category->name('en')}}</td>
-                            <td>{{$category->name('ar')}}</td>
-                            <td>
-                                @if ($category->active)
-                                    <span class="badge bg-success">yes</span>
-                                @else
-                                    <span class="badge bg-danger">no</span>
-                                @endif
-                            </td>
-                            <td>
-                                <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->name('en')}}" data-name-ar="{{$category->name('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button type="submit" data-id="{{$category->id}}" form="form-delete" class="btn btn-sm btn-danger delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                <a href="{{url("dashboard/categories/toggle/$category->id")}}" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-toggle-on"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                </table>
-                    <div class="d-flex my-3 justify-content-center">
-                        {{$categories->links()}}
+                    <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name (en)</th>
+                                        <th>Name (ar)</th>
+                                        <th>Active</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
 
+                            <tbody>
+                                    @foreach ($categories as $category )
+                                        <form action="" method="POST" id="form-delete">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$category->name('en')}}</td>
+                                            <td>{{$category->name('ar')}}</td>
+                                            <td>
+                                                @if ($category->active)
+                                                    <span class="badge bg-success">yes</span>
+                                                @else
+                                                    <span class="badge bg-danger">no</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->name('en')}}" data-name-ar="{{$category->name('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="submit" data-id="{{$category->id}}" form="form-delete" class="btn btn-sm btn-danger delete-btn">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                <a href="{{url("dashboard/categories/toggle/$category->id")}}" class="btn btn-sm btn-secondary">
+                                                    <i class="fas fa-toggle-on"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                                <div class="d-flex my-3 justify-content-center">
+                                    {{$categories->links()}}
+
+                                </div>
                     </div>
-
                 </div>
-
-                </div>
-
-                </div>
+            </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -147,25 +145,28 @@
             </div>
     <div class="modal-body">
         @include('admin.include.errors')
-        <form method="POST" action="{{url("dashboard/categories/$category->id")}}" id="edit-form">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="id" id="edit-form-id">
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label >Name (en)</label>
-                        <input type="text" name="name_en" class="form-control" id="edit-form-name-en">
+        @if (isset($category))
+            <form method="POST" action="{{url("dashboard/categories/$category->id")}}" id="edit-form">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" id="edit-form-id">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label >Name (en)</label>
+                            <input type="text" name="name_en" class="form-control" id="edit-form-name-en">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Name (ar)</label>
+                            <input type="text" name="name_ar" class="form-control" id="edit-form-name-ar">
+                        </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label>Name (ar)</label>
-                        <input type="text" name="name_ar" class="form-control" id="edit-form-name-ar">
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        @endif
+
     </div>
         <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
