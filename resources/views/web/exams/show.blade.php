@@ -45,7 +45,7 @@
 					<!-- main blog -->
 					<div id="main" class="col-md-9">
 
-                        @include('web.include.messages');
+                        @include('web.include.messages')
 
 						<!-- blog post -->
 						<div class="blog-post mb-5">

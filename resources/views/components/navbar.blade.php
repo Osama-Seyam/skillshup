@@ -26,7 +26,7 @@
                 @if(Auth::user()->role->name == 'student')
                     <li><a href="{{url('profile')}}">{{ __('web.profile')}}</a></li>
                 @else
-                    <li><a href="{{url('dashboard')}}">{{ __('web.dashboard')}}</a></li>
+                    <li><a href="{{url('dashboard/categories')}}">{{ __('web.dashboard')}}</a></li>
                 @endif
                 <li><a id="logout-link" href="#">{{ __('web.signout')}}</a></li>
             @endauth
