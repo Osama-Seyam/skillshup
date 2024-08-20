@@ -25,7 +25,7 @@ class SkillController extends controller
              'category_id'=> 'required|exists:categories,id'
         ]);
 
-        $path = Storage::putFile("skills",$request->file('img'));
+        $path = request()->file('img')->store('skills');
 
         Skill::create([
              'name'=>json_encode([
@@ -54,7 +54,7 @@ class SkillController extends controller
 
         if($request->hasFile('img')){
             Storage::delete($path);
-            $path = Storage::putFile("skills", $request->file('img'));
+            $path = request()->file('img')->store('skills');
         }
 
         $skill->update([

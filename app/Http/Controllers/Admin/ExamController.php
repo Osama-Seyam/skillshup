@@ -48,7 +48,7 @@ class ExamController extends controller
              'difficulty'=>'required|integer|min:1|max:5',
         ]);
 
-        $path = Storage::putFile("exams",$request->file('img'));
+        $path = request()->file('img')->store('exams');
 
         $exam = Exam::create([
              'name'=>json_encode([
@@ -138,7 +138,7 @@ class ExamController extends controller
            $path = $exam->img;
             if($request->hasFile('img')){
                 Storage::delete($path);
-                $path = Storage::putFile("exams", $request->file('img'));
+                $path = request()->file('img')->store('exams');
             }
 
             $exam->update([
