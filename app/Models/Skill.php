@@ -24,7 +24,7 @@ class Skill extends Model
         return $this->hasMany(Exam::class);
     }
 
-    public function name($lang = null){
+    public function nameLang($lang = null){
         $lang = $lang ?? App::getLocale();
         return json_decode($this->name)->$lang;
     }

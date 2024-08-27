@@ -59,13 +59,13 @@
                         </form>
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$exam->name('en')}}</td>
-                            <td>{{$exam->name('ar')}}</td>
+                            <td>{{$exam->nameLang('en')}}</td>
+                            <td>{{$exam->nameLang('ar')}}</td>
 
                             <td>
                                 <img src="{{ asset("uploads/$exam->img") }}" alt="" height="50px">
                             </td>
-                            <td>{{ $exam->skill->name('en') }}</td>
+                            <td>{{ $exam->skill->nameLang('en') }}</td>
                             <td>{{ $exam->questions_no }}</td>
                             <td>
                                 @if ($exam->active)

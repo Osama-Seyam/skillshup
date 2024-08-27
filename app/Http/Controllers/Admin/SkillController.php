@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Skill;
 use Exception;
+use App\Models\Skill;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class SkillController extends controller
 {
     public function index(){
         $data['skills'] = Skill::orderBy('id','Desc')->paginate(8);
-        $data['categories'] = Category::select('id','name')->get();
+        $categories = Category::select('id','name')->get();
+        $data['categories'] = $this->formArray($categories);
+
         return view('admin.skills.index')->with($data);
     }
 
@@ -92,4 +95,13 @@ class SkillController extends controller
     }
 
 
+    public function formArray($model){
+        $lang=App::getLocale();
+        $array=[];
+        foreach($model as $value){
+            $array[$value->id] = $value->nameLang($lang);
+        }
+
+        return $array;
+    }
 }
