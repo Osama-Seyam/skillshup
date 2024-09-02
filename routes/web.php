@@ -84,3 +84,5 @@ route::prefix('dashboard')->middleware('auth','can-enter-dashboard')->group(func
     Route::resource('messages' ,MessageController::class)->except(['store','create' , 'update' , 'destroy' , 'edit']);;
     Route::post('/messages/response/{message}', [MessageController::class , 'response']);
 });
+
+

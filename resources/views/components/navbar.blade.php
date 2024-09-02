@@ -11,7 +11,7 @@
                 <ul class="dropdown-menu">
                     @foreach ($cats as $cat)
                         <li><a href="{{ url("categories/show/{$cat->id}") }}">
-                            {{$cat->name()}}
+                            {{$cat->nameLang()}}
                         </a></li>
                     @endforeach
                 </ul>

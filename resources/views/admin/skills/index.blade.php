@@ -52,19 +52,16 @@
                 <tbody>
                     @foreach ($skills as $skill )
 
-                    <form action="" method="POST" id="form-delete">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-
+                        {!! Form::open(['method' => 'DELETE' , 'id' => 'form-delete']) !!}
+                        {!!Form::close()!!}
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$skill->name('en')}}</td>
-                            <td>{{$skill->name('ar')}}</td>
+                            <td>{{$skill->nameLang('en')}}</td>
+                            <td>{{$skill->nameLang('ar')}}</td>
                             <td>
                                 <img src="{{ asset("uploads/$skill->img") }}" alt="" height="50px">
                             </td>
-                            <td>{{ $skill->category->name('en') }}</td>
+                            <td>{{ $skill->category->nameLang('en') }}</td>
                             <td>
                                 @if ($skill->active)
                                     <span class="badge bg-success">yes</span>
@@ -73,7 +70,7 @@
                                 @endif
                             </td>
                             <td>
-                                <button  type="submit" data-id="{{$skill->id}}" data-name-en="{{$skill->name('en')}}" data-name-ar="{{$skill->name('ar')}}" data-cat-id="{{$skill->category_id}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
+                                <button  type="submit" data-id="{{$skill->id}}" data-name-en="{{$skill->nameLang('en')}}" data-name-ar="{{$skill->nameLang('ar')}}" data-cat-id="{{$skill->category_id}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button type="submit" form="form-delete" data-id="{{$skill->id}}" class="btn btn-sm btn-danger delete-btn">
@@ -115,19 +112,17 @@
                 </div>
             <div class="modal-body">
                 @include('admin.include.errors')
-                <form method="POST" action="{{url('dashboard/skills')}}" id="add-form" enctype="multipart/form-data">
+                {!! Form::open(['url' => 'dashboard/skills', 'id' => 'add-form', 'files' => true]) !!}
                     @csrf
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label >Name (en)</label>
-                                <input type="text" name="name_en" class="form-control">
+                                {!! Form::text('name_en', null , ['class'=>'form-control' , 'placeholder' => 'name (en)']) !!}
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Name (ar)</label>
-                                <input type="text" name="name_ar" class="form-control" >
+                                {!! Form::text('name_ar', null , ['class'=>'form-control' , 'placeholder' => 'name (ar)']) !!}
                                 </div>
                             </div>
                         </div>
@@ -135,11 +130,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="custom-select form-control" name="category_id">
-                                        @foreach ($categories as $category)
-                                            <option value="{{$category->id}}"> {{$category->name('en')}}</option>
-                                        @endforeach
-                                   </select>
+                                    {!! Form::select('category_id', $categories ?? null, null, ['class' => 'custom-select form-control']) !!}
                                 </div>
                             </div>
 
@@ -178,10 +169,8 @@
     <div class="modal-body">
         @include('admin.include.errors')
         @if (isset($skill))
-        <form method="POST" action="{{url("dashboard/skills/$skill->id")}}" id="edit-form" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="id" id="edit-form-id">
+            {!! Form::model($skill, ['method' => 'PUT', 'url' => "dashboard/skills/{$skill->id}", 'id' => 'edit-form']) !!}
+                {!! Form::hidden('id', null, ['id' => 'edit-form-id']) !!}
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -202,7 +191,7 @@
                         <label>Category</label>
                         <select class="custom-select form-control" name="category_id" id="edit-form-cat-id">
                             @foreach ($categories as $category)
-                                <option value="{{$category->id}}"> {{$category->name('en')}}</option>
+                            {!! Form::select('category_id', $categories ?? null, null, ['class' => 'custom-select form-control']) !!}
                             @endforeach
                        </select>
                     </div>
@@ -220,7 +209,7 @@
                     <img src="" id="" alt="">
                 </div>
             </div>
-        </form>
+        {!!Form::close()!!}
         @endif
     </div>
         <div class="modal-footer justify-content-between">

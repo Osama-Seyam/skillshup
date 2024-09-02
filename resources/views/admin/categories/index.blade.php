@@ -51,14 +51,12 @@
 
                             <tbody>
                                     @foreach ($categories as $category )
-                                        <form action="" method="POST" id="form-delete">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
+                                        {!! Form::open(['method' => 'DELETE', 'id' => 'form-delete']) !!}
+                                        {!! Form::close() !!}
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$category->name('en')}}</td>
-                                            <td>{{$category->name('ar')}}</td>
+                                            <td>{{$category->nameLang('en')}}</td>
+                                            <td>{{$category->nameLang('ar')}}</td>
                                             <td>
                                                 @if ($category->active)
                                                     <span class="badge bg-success">yes</span>
@@ -67,7 +65,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->name('en')}}" data-name-ar="{{$category->name('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
+                                                <button  type="submit" data-id="{{$category->id}}" data-name-en="{{$category->nameLang('en')}}" data-name-ar="{{$category->nameLang('ar')}}" data-toggle="modal" data-target="#edit-modal" class="btn btn-sm btn-info edit-btn">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <button type="submit" data-id="{{$category->id}}" form="form-delete" class="btn btn-sm btn-danger delete-btn">
@@ -107,23 +105,20 @@
                 </div>
             <div class="modal-body">
                 @include('admin.include.errors')
-                <form method="POST" action="{{url('dashboard/categories')}}" id="add-form">
-                    @csrf
+                {!! Form::open(['url' => 'dashboard/categories', 'id' => 'add-form']) !!}
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label >Name (en)</label>
-                                <input type="text" name="name_en" class="form-control">
+                                {!! Form::text('name_en', null, ['class' => 'form-control' , "placeholder" => "Name (en)"]) !!}
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Name (ar)</label>
-                                <input type="text" name="name_ar" class="form-control" >
+                                {!! Form::text('name_ar', null, ['class' => 'form-control' , "placeholder" => "Name (ar)"]) !!}
                             </div>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -146,25 +141,21 @@
     <div class="modal-body">
         @include('admin.include.errors')
         @if (isset($category))
-            <form method="POST" action="{{url("dashboard/categories/$category->id")}}" id="edit-form">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="id" id="edit-form-id">
+            {!! Form::model($category, ['method' => 'PUT', 'url' => "dashboard/categories/{$category->id}", 'id' => 'edit-form']) !!}
+                {!! Form::hidden('id', null, ['id' => 'edit-form-id']) !!}
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label >Name (en)</label>
-                            <input type="text" name="name_en" class="form-control" id="edit-form-name-en">
+                            {!! Form::text('name_en', null, ['class' => 'form-control' , "placeholder" => "Name (en)"]) !!}
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label>Name (ar)</label>
-                            <input type="text" name="name_ar" class="form-control" id="edit-form-name-ar">
+                            {!! Form::text('name_en', null, ['class' => 'form-control' , "placeholder" => "Name (en)"]) !!}
                         </div>
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
         @endif
 
     </div>

@@ -30,7 +30,7 @@ class Exam extends Model
         ->withTimestamps();
     }
 
-    public function name($lang = null){
+    public function nameLang($lang = null){
         $lang = $lang ?? App::getLocale();
         return json_decode($this->name)->$lang;
     }
