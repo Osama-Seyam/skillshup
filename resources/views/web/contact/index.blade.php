@@ -108,7 +108,6 @@
                         $.each(xhr.responseJSON.errors, function(key,item){
                             $('#errors-div').append("<p>" + item + "</p>")
                         });
-
                     }
                 });
 
