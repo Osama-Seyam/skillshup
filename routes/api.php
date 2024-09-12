@@ -22,6 +22,8 @@ Route::apiResource('categories', CategoryController::class, array("as" => "api")
 Route::apiResource('skills', SkillController::class, array("as" => "api"));
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('exams', ExamController::class, array("as" => "api"));
     Route::post('exams/start/{id}', [ExamController::class, 'start']);
